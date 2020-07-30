@@ -4,7 +4,7 @@
 class registerFile{
 
 public:
-registerFile();
+	registerFile();
 
 
 private:
