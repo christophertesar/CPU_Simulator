@@ -1,11 +1,11 @@
 #include "instruction.h"
 
 instruction::instruction(){
-	std::cout << "instruction constructor called" << std::endl;
+	//std::cout << "instruction constructor called" << std::endl;
 }
 
 instruction::~instruction(){
-	std::cout << "insturction destructor called" << std::endl;
+	//std::cout << "insturction destructor called" << std::endl;
 }
 
 void instruction::set_opcode(std::string s){
