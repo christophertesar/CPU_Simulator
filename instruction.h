@@ -4,7 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
-//#include "memory.h"
+
 
 class instruction{
 
@@ -17,6 +17,14 @@ public:
 	void set_dest(std::string);
 	void set_immediate(std::string);
 	void set_address(std::string);
+	
+	std::string get_opcode();
+	std::string get_src1();
+	std::string get_src2();
+	std::string get_dest();
+	std::string get_immediate();
+	std::string get_address();
+	
 
 private:
 	std::string opcode;

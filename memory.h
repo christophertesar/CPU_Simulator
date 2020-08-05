@@ -20,6 +20,19 @@ public:
 	instruction instruction_decode(unsigned int);
 	unsigned int get_instruction(int);
 	void disp_instructions();
+	
+	unsigned int find_dest1(unsigned int);
+	unsigned int find_dest2(unsigned int);
+	unsigned int find_immediate(unsigned int);
+	unsigned int find_src2(unsigned int);
+	unsigned int find_address(unsigned int);
+	void set_dest(unsigned int,unsigned int,instruction&);
+	void set_immediate(unsigned int, instruction&);
+	void set_src2(unsigned int, instruction&);
+	void set_destination(unsigned int, instruction&);
+	void set_address(unsigned int, instruction&);
+	void set_instruction(unsigned int, instruction&);
+	
 
 private:
 	std::vector<unsigned int> instruct;

@@ -21,7 +21,12 @@ pipeline::~pipeline(){
 }
 
 void pipeline::fetch(){
-	mem.instruction_decode(mem.get_instruction(rf.get_pc()));
+	instruction j = mem.instruction_decode(mem.get_instruction(rf.get_pc()));
+	
+	std::cout << j.get_dest() << std::endl;
+	std::cout << j.get_src1() << std::endl;
+	std::cout << j.get_immediate() << std::endl;
+	
 }
 
 void pipeline::execute(){
