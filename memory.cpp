@@ -1,9 +1,8 @@
 #include "memory.h"
 
 memory::memory(){
-	pc = 0;
+
 	instruct.reserve(20);
-	//memory::read_instructions("inst_mem.csv");
 }
 
 memory::memory(std::string filename){
@@ -160,8 +159,11 @@ instruction memory::instruction_decode(unsigned int inst){
 	else{
 		std::cout << "R" << std::endl;
 		i.set_type("R");
-		
-		if ((inst & 0x3C000000) == 0x00000000){
+		if((inst & 0x3C000000) == 0x20000000){
+			std::cout << "mov print" << std::endl;
+			i.set_opcode("mov print");
+		}
+		else if ((inst & 0x3C000000) == 0x00000000){
 			std::cout << "add" << std::endl;
 			i.set_opcode("add");
 		}
@@ -193,16 +195,14 @@ instruction memory::instruction_decode(unsigned int inst){
 			std::cout << "mov" << std::endl;
 			i.set_opcode("mov");
 		}
-		else if((inst & 0x3C000000) == 0x20000000){
-			std::cout << "mov print" << std::endl;
-			i.set_opcode("mov print");
-		}
+
 		else
 			std::cout << "Error at instruction decode R" << std::endl;
 		
 		unsigned int dest = find_dest1(inst);
 		unsigned int src1 = find_dest2(inst);
 		unsigned int src2 = find_src2(inst);
+
 		set_dest(dest,src1,i);
 		set_src2(src2,i);
 		

@@ -9,7 +9,7 @@ pipeline::pipeline(){
 
 pipeline::pipeline(std::string fn){
 	this->mem = memory();
-	std::cout << "initialized mem" << std::endl;
+
 	filename = fn;
 	mem.read_instructions(fn);
 	
@@ -44,16 +44,16 @@ void pipeline::exe(){
 									   //read
 	
 	if(i.get_type() == "R"){//R
-
+		ex.executeR(i,rf);
 	}
 	else if(i.get_type() == "I"){//I
 		ex.executeI(i,rf);
 	}
 	else if(i.get_type() == "J"){//J
-
+		ex.executeJ(i,rf);
 	}
 	else if(i.get_type() == "P"){//P
-
+		ex.executeP(i,rf);
 	}
 	else
 		std::cout << "Error at execute() read." << std::endl;

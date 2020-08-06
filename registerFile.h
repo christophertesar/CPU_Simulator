@@ -13,6 +13,7 @@ public:
 	
 	int read_r0();
 	int read_r1();
+	int read_r2();
 	int read_r3();
 	int read_r4();
 	int read_r5();
@@ -30,6 +31,7 @@ public:
 	int get_pc();
 	
 	void write_r1(int);
+	void write_r2(int);
 	void write_r3(int);
 	void write_r4(int);
 	void write_r5(int);
@@ -45,6 +47,7 @@ public:
 	void write_r15(int);
 	
 	void increment_pc();
+	void write_pc(int);
 	
 	void write_reg(std::string,int);
 	int read_reg(std::string);
@@ -52,7 +55,7 @@ public:
 
 private:
 	int r0 = 0;  //constant register of value 0;
-	int r2;      //can only be written to by p type instructions
+	int r2 = 0;      //can only be written to by p type instructions
 	
 	int r1,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15;
 	int pc = 0;

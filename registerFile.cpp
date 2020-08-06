@@ -25,6 +25,10 @@ int registerFile::read_r1(){
 	return r1;
 }
 
+int registerFile::read_r2(){
+	return r2;
+}
+
 int registerFile::read_r3(){
 	return r3;
 }
@@ -79,6 +83,10 @@ int registerFile::read_r15(){
 		
 void registerFile::write_r1(int n){
 	r1 = n;
+}
+
+void registerFile::write_r2(int n){
+	r2 = n;
 }
 		
 void registerFile::write_r3(int n){
@@ -141,9 +149,16 @@ void registerFile::increment_pc(){
 	pc++;
 }
 
+void registerFile::write_pc(int n){
+	pc = n;
+}
+
 void registerFile::write_reg(std::string s, int n){
 	if(s == "1"){
 		write_r1(n);
+	}
+	else if(s == "2"){
+		write_r2(n);
 	}
 	else if(s == "3"){
 		write_r3(n);
@@ -184,6 +199,9 @@ void registerFile::write_reg(std::string s, int n){
 	else if(s == "15"){
 		write_r15(n);
 	}
+	else if(s == "0"){
+		std::cout << "Cannot write to reg 0." << std::endl;
+	}
 	else
 		std::cout << "Cannot write to reg." << std::endl;
 }
@@ -194,6 +212,9 @@ int registerFile::read_reg(std::string s){
 	}
 	else if(s == "1"){
 		return read_r1();
+	}
+	else if(s == "2"){
+		return read_r2();
 	}
 	else if(s == "3"){
 		return read_r3();
