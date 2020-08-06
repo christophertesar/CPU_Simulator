@@ -11,7 +11,13 @@ class IQueue{
 
 public:
 
-std::queue<instruction> iq;
+IQueue();
+~IQueue();
+
+std::queue<instruction> iqueue;
+std::vector<int> id;
+
+void push_id_num();
 
 private:
 

@@ -1,7 +1,24 @@
 #include "registerFile.h"
 
 registerFile::registerFile(){
-	
+	r1 = 0;
+	r3 = 0;
+	r4 = 0;
+	r5 = 0;
+	r6 = 0;
+	r7 = 0;
+	r8 = 0;
+	r9 = 0;
+	r10 = 0;
+	r11 = 0;
+	r12 = 0;
+	r13 = 0;
+	r14 = 0;
+	r15 = 0;
+}
+
+int registerFile::read_r0(){
+	return r0;
 }
 
 int registerFile::read_r1(){
@@ -118,6 +135,107 @@ void registerFile::write_r15(int n){
 
 int registerFile::get_pc(){
 	return pc;
+}
+
+void registerFile::increment_pc(){
+	pc++;
+}
+
+void registerFile::write_reg(std::string s, int n){
+	if(s == "1"){
+		write_r1(n);
+	}
+	else if(s == "3"){
+		write_r3(n);
+	}
+	else if(s == "4"){
+		write_r4(n);
+	}
+	else if(s == "5"){
+		write_r5(n);
+	}
+	else if(s == "6"){
+		write_r6(n);
+	}
+	else if(s == "7"){
+		write_r7(n);
+	}
+	else if(s == "8"){
+		write_r8(n);
+	}
+	else if(s == "9"){
+		write_r9(n);
+	}
+	else if(s == "10"){
+		write_r10(n);
+	}
+	else if(s == "11"){
+		write_r11(n);
+	}
+	else if(s == "12"){
+		write_r12(n);
+	}
+	else if(s == "13"){
+		write_r13(n);
+	}
+	else if(s == "14"){
+		write_r14(n);
+	}
+	else if(s == "15"){
+		write_r15(n);
+	}
+	else
+		std::cout << "Cannot write to reg." << std::endl;
+}
+
+int registerFile::read_reg(std::string s){
+	if(s == "0"){
+		return read_r0();
+	}
+	else if(s == "1"){
+		return read_r1();
+	}
+	else if(s == "3"){
+		return read_r3();
+	}
+	else if(s == "4"){
+		return read_r4();
+	}
+	else if(s == "5"){
+		return read_r5();
+	}
+	else if(s == "6"){
+		return read_r6();
+	}
+	else if(s == "7"){
+		return read_r7();
+	}
+	else if(s == "8"){
+		return read_r8();
+	}
+	else if(s == "9"){
+		return read_r9();
+	}
+	else if(s == "10"){
+		return read_r10();
+	}
+	else if(s == "11"){
+		return read_r11();
+	}
+	else if(s == "12"){
+		return read_r12();
+	}
+	else if(s == "13"){
+		return read_r13();
+	}
+	else if(s == "14"){
+		return read_r14();
+	}
+	else if(s == "15"){
+		return read_r15();
+	}
+	else
+		return -1;
 }
 
 registerFile::registerFile(const registerFile &a){

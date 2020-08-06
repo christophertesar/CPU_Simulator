@@ -8,7 +8,11 @@ std::cin >> filename;
 filename = filename + ".csv";
 pipeline pipe("inst_mem.csv");
 
-pipe.fetch();
+for(int i = 0; i < 12; i++){
+	pipe.fetch();
+	pipe.exe();
+}
 
+return 0;
 
 }

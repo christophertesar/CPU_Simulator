@@ -2,6 +2,7 @@
 #define REGISTERFILE_H
 
 #include <iostream>
+#include <string>
 #include "helperFunctions.h"
 
 class registerFile{
@@ -10,6 +11,7 @@ public:
 	registerFile();
 	registerFile(const registerFile&);
 	
+	int read_r0();
 	int read_r1();
 	int read_r3();
 	int read_r4();
@@ -44,7 +46,8 @@ public:
 	
 	void increment_pc();
 	
-	
+	void write_reg(std::string,int);
+	int read_reg(std::string);
 	
 
 private:
