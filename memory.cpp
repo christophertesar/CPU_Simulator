@@ -12,7 +12,7 @@ memory::memory(std::string filename){
 }
 
 memory::~memory(){
-	std::cout << "memory destructor called" << std::endl;
+
 }
 
 memory::memory(const memory &a){
@@ -41,8 +41,8 @@ void memory::read_instructions(std::string filename){
 	}
 	file.close(); //finished
 	
-	for(unsigned int c:instruct)
-		std::cout << c << std::endl;
+	//for(unsigned int c:instruct)
+	//	std::cout << c << std::endl;
 }
 
 instruction memory::instruction_decode(unsigned int inst){
@@ -50,43 +50,43 @@ instruction memory::instruction_decode(unsigned int inst){
 	instruction i;
 	//---------------------------------------------------------------
 	if((inst & 0xC0000000) == 0xC0000000){ //110000000... bitmask
-		std::cout << "P" << std::endl;
+		//std::cout << "P" << std::endl;
 		i.set_type("P");
 		
 		if ((inst & 0x3C000000) == 0x00000000){
-			std::cout << "add" << std::endl;
+			//std::cout << "add" << std::endl;
 			i.set_opcode("add");
 		}
 		else if((inst & 0x3C000000) == 0x04000000){
-			std::cout << "sub" << std::endl;
+			//std::cout << "sub" << std::endl;
 			i.set_opcode("sub");
 		}
 		else if((inst & 0x3C000000) == 0x08000000){
-			std::cout << "mult" << std::endl;
+			//std::cout << "mult" << std::endl;
 			i.set_opcode("mult");
 		}
 		else if((inst & 0x3C000000) == 0x0C000000){
-			std::cout << "div" << std::endl;
+			//std::cout << "div" << std::endl;
 			i.set_opcode("div");
 		}
 		else if((inst & 0x3C000000) == 0x10000000){
-			std::cout << "mod" << std::endl;
+			//std::cout << "mod" << std::endl;
 			i.set_opcode("mod");
 		}
 		else if((inst & 0x3C000000) == 0x14000000){
-			std::cout << "beq" << std::endl;
+			//std::cout << "beq" << std::endl;
 			i.set_opcode("beq");
 		}
 		else if((inst & 0x3C000000) == 0x18000000){
-			std::cout << "bne" << std::endl;
+			//std::cout << "bne" << std::endl;
 			i.set_opcode("bne");
 		}
 		else if((inst & 0x3C000000) == 0x1C000000){
-			std::cout << "mov" << std::endl;
+			//std::cout << "mov" << std::endl;
 			i.set_opcode("mov");
 		}
 		else if((inst & 0x3C000000) == 0x20000000){
-			std::cout << "mov print" << std::endl;
+			//std::cout << "mov print" << std::endl;
 			i.set_opcode("mov print");
 		}
 		else
@@ -98,7 +98,7 @@ instruction memory::instruction_decode(unsigned int inst){
 	}
 	//---------------------------------------------------------------
 	else if((inst & 0xC0000000) == 0x80000000){ //10
-		std::cout << "J" << std::endl;
+		//std::cout << "J" << std::endl;
 		i.set_type("J");
 		
 		unsigned int address = find_address(inst);
@@ -106,43 +106,43 @@ instruction memory::instruction_decode(unsigned int inst){
 	}
 	//---------------------------------------------------------------
 	else if((inst & 0x40000000) == 0x40000000){ //01
-		std::cout << "I" << std::endl;
+		//std::cout << "I" << std::endl;
 		i.set_type("I");
 		
 		if ((inst & 0x3C000000) == 0x00000000){
-			std::cout << "add" << std::endl;
+			//std::cout << "add" << std::endl;
 			i.set_opcode("add");
 		}
 		else if((inst & 0x3C000000) == 0x0C000000){
-			std::cout << "div" << std::endl;
+			//std::cout << "div" << std::endl;
 			i.set_opcode("div");
 		}
 		else if((inst & 0x3C000000) == 0x04000000){
-			std::cout << "sub" << std::endl;
+			//std::cout << "sub" << std::endl;
 			i.set_opcode("sub");
 		}
 		else if((inst & 0x3C000000) == 0x18000000){
-			std::cout << "bne" << std::endl;
+			//std::cout << "bne" << std::endl;
 			i.set_opcode("bne");
 		}
 		else if((inst & 0x3C000000) == 0x08000000){
-			std::cout << "mult" << std::endl;
+			//std::cout << "mult" << std::endl;
 			i.set_opcode("mult");
 		}
 		else if((inst & 0x3C000000) == 0x10000000){
-			std::cout << "mod" << std::endl;
+			//std::cout << "mod" << std::endl;
 			i.set_opcode("mod");
 		}
 		else if((inst & 0x3C000000) == 0x14000000){
-			std::cout << "beq" << std::endl;
+			//std::cout << "beq" << std::endl;
 			i.set_opcode("beq");
 		}
 		else if((inst & 0x3C000000) == 0x1C000000){
-			std::cout << "mov" << std::endl;
+			//std::cout << "mov" << std::endl;
 			i.set_opcode("mov");
 		}
 		else if((inst & 0x3C000000) == 0x20000000){
-			std::cout << "mov print" << std::endl;
+			//std::cout << "mov print" << std::endl;
 			i.set_opcode("mov print");
 		}
 		else
@@ -157,42 +157,42 @@ instruction memory::instruction_decode(unsigned int inst){
 	}
 
 	else{
-		std::cout << "R" << std::endl;
+		//std::cout << "R" << std::endl;
 		i.set_type("R");
 		if((inst & 0x3C000000) == 0x20000000){
-			std::cout << "mov print" << std::endl;
+			//std::cout << "mov print" << std::endl;
 			i.set_opcode("mov print");
 		}
 		else if ((inst & 0x3C000000) == 0x00000000){
-			std::cout << "add" << std::endl;
+			//std::cout << "add" << std::endl;
 			i.set_opcode("add");
 		}
 		else if((inst & 0x3C000000) == 0x04000000){
-			std::cout << "sub" << std::endl;
+			//std::cout << "sub" << std::endl;
 			i.set_opcode("sub");
 		}
 		else if((inst & 0x3C000000) == 0x08000000){
-			std::cout << "mult" << std::endl;
+			//std::cout << "mult" << std::endl;
 			i.set_opcode("mult");
 		}
 		else if((inst & 0x3C000000) == 0x0C000000){
-			std::cout << "div" << std::endl;
+			//std::cout << "div" << std::endl;
 			i.set_opcode("div");
 		}
 		else if((inst & 0x3C000000) == 0x10000000){
-			std::cout << "mod" << std::endl;
+			//std::cout << "mod" << std::endl;
 			i.set_opcode("mod");
 		}
 		else if((inst & 0x3C000000) == 0x14000000){
-			std::cout << "beq" << std::endl;
+			//std::cout << "beq" << std::endl;
 			i.set_opcode("beq");
 		}
 		else if((inst & 0x3C000000) == 0x18000000){
-			std::cout << "bne" << std::endl;
+			//std::cout << "bne" << std::endl;
 			i.set_opcode("bne");
 		}
 		else if((inst & 0x3C000000) == 0x1C000000){
-			std::cout << "mov" << std::endl;
+			//std::cout << "mov" << std::endl;
 			i.set_opcode("mov");
 		}
 

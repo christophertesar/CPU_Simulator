@@ -10,6 +10,10 @@ IQueue::~IQueue(){
 
 void IQueue::push_id_num(){
 
-	int i = iqueue.size();
-	id.push_back(i);
+	//int i = iqueue.size();
+	//id.push_back(i);
+}
+
+IQueue::IQueue(const IQueue &i){
+
 }

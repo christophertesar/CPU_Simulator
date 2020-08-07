@@ -40,7 +40,7 @@ fetchUnit.o: fetchUnit.cpp
 
 registerFile.o: registerFile.cpp
 	$(CC) $(FLAGS) registerFile.cpp
-
+	
 clean: 
 	rm -f $(OBJS) $(OUT)
 

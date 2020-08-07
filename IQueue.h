@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <queue>
+#include <list>
 #include "helperFunctions.h"
 #include "instruction.h"
 
@@ -13,14 +14,17 @@ public:
 
 IQueue();
 ~IQueue();
+IQueue(const IQueue&);
 
 std::queue<instruction> iqueue;
-std::vector<int> id;
+
+std::list<bool> valid;
 
 void push_id_num();
 
 private:
 
+int iqq;
 
 };
 

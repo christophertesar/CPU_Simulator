@@ -28,6 +28,39 @@ public:
 	int read_r14();
 	int read_r15();
 	
+	bool read_v0(){return true;}
+	bool read_v1();
+	bool read_v2();
+	bool read_v3();
+	bool read_v4();
+	bool read_v5();
+	bool read_v6();
+	bool read_v7();
+	bool read_v8();
+	bool read_v9();
+	bool read_v10();
+	bool read_v11();
+	bool read_v12();	
+	bool read_v13();
+	bool read_v14();
+	bool read_v15();
+	
+	void write_v1(bool);
+	void write_v2(bool);
+	void write_v3(bool);
+	void write_v4(bool);
+	void write_v5(bool);
+	void write_v6(bool);
+	void write_v7(bool);
+	void write_v8(bool);
+	void write_v9(bool);
+	void write_v10(bool);
+	void write_v11(bool);
+	void write_v12(bool);	
+	void write_v13(bool);
+	void write_v14(bool);
+	void write_v15(bool);
+	
 	int get_pc();
 	
 	void write_r1(int);
@@ -46,11 +79,15 @@ public:
 	void write_r14(int);
 	void write_r15(int);
 	
+	
+	
 	void increment_pc();
 	void write_pc(int);
 	
 	void write_reg(std::string,int);
 	int read_reg(std::string);
+	void write_v(std::string, bool);
+	bool read_v(std::string);
 	
 
 private:
@@ -59,6 +96,8 @@ private:
 	
 	int r1,r3,r4,r5,r6,r7,r8,r9,r10,r11,r12,r13,r14,r15;
 	int pc = 0;
+	
+	bool v0 = true,v1,v2,v3,v4,v5,v6,v7,v8,v9,v10,v11,v12,v13,v14,v15;
 };
 
 #endif

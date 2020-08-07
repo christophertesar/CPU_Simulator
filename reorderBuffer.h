@@ -18,13 +18,19 @@ reorderBuffer(const reorderBuffer&);
 //reorderBuffer operator=(const reorderBuffer&){return 0;}
 
 std::list<instruction> rob;
-std::list<bool> valid1;
-std::list<bool> valid2;
+std::list<bool> valid_bit;
 std::list<int> rob_id;
+
+void increment_rob();
+void increment_rob_next();
+
+int get_robval();
+int get_robnext();
 
 private:
 
-int robert;
+int robval = 0;
+int robnext = 0;
 
 };
 

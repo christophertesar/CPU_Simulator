@@ -1,3 +1,6 @@
+#ifndef EXECUTE_H
+#define EXECUTE_H
+
 #include <iostream>
 #include <string>
 #include <queue>
@@ -25,3 +28,5 @@ private:
 
 
 };
+
+#endif

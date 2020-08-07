@@ -15,6 +15,21 @@ registerFile::registerFile(){
 	r13 = 0;
 	r14 = 0;
 	r15 = 0;
+	
+	v1 = true;
+	v3 = true;
+	v4 = true;
+	v5 = true;
+	v6 = true;
+	v7 = true;
+	v8 = true;
+	v9 = true;
+	v10 = true;
+	v11 = true;
+	v12 = true;
+	v13 = true;
+	v14 = true;
+	v15 = true;
 }
 
 int registerFile::read_r0(){
@@ -257,6 +272,235 @@ int registerFile::read_reg(std::string s){
 	}
 	else
 		return -1;
+}
+
+
+bool registerFile::read_v1(){
+	return v1;
+}
+
+bool registerFile::read_v2(){
+	return v2;
+}
+
+bool registerFile::read_v3(){
+	return v3;
+}
+
+bool registerFile::read_v4(){
+	return v4;
+}
+	
+bool registerFile::read_v5(){
+	return v5;
+}	
+
+bool registerFile::read_v6(){
+	return v6;
+}
+
+bool registerFile::read_v7(){
+	return v7;
+}	
+
+bool registerFile::read_v8(){
+	return v8;
+}
+	
+bool registerFile::read_v9(){
+	return v9;
+}
+	
+bool registerFile::read_v10(){
+	return v10;
+}
+
+bool registerFile::read_v11(){
+	return v11;
+}
+
+bool registerFile::read_v12(){
+	return v12;
+}
+	
+bool registerFile::read_v13(){
+	return v13;
+}
+	
+bool registerFile::read_v14(){
+	return v14;
+}	
+
+bool registerFile::read_v15(){
+	return v15;
+}
+
+
+
+void registerFile::write_v1(bool n){
+	v1 = n;
+}
+
+void registerFile::write_v2(bool n){
+	v2 = n;
+}
+
+void registerFile::write_v3(bool n){
+	v3 = n;
+}
+
+void registerFile::write_v4(bool n){
+	v4 = n;
+}
+	
+void registerFile::write_v5(bool n){
+	v5 = n;
+}	
+
+void registerFile::write_v6(bool n){
+	v6 = n;
+}
+
+void registerFile::write_v7(bool n){
+	v7 = n;
+}	
+
+void registerFile::write_v8(bool n){
+	v8 = n;
+}
+	
+void registerFile::write_v9(bool n){
+	v9 = n;
+}
+	
+void registerFile::write_v10(bool n){
+	v10 = n;
+}
+
+void registerFile::write_v11(bool n){
+	v11 = n;
+}
+
+void registerFile::write_v12(bool n){
+	v12 = n;
+}
+	
+void registerFile::write_v13(bool n){
+	v13 = n;
+}
+	
+void registerFile::write_v14(bool n){
+	v14 = n;
+}	
+
+void registerFile::write_v15(bool n){
+	v15 = n;
+}
+
+bool registerFile::read_v(std::string s){
+	if(s == "0"){
+		return read_v0();
+	}
+	else if(s == "1"){
+		return read_v1();
+	}
+	else if(s == "2"){
+		return read_v2();
+	}
+	else if(s == "3"){
+		return read_v3();
+	}
+	else if(s == "4"){
+		return read_v4();
+	}
+	else if(s == "5"){
+		return read_v5();
+	}
+	else if(s == "6"){
+		return read_v6();
+	}
+	else if(s == "7"){
+		return read_v7();
+	}
+	else if(s == "8"){
+		return read_v8();
+	}
+	else if(s == "9"){
+		return read_v9();
+	}
+	else if(s == "10"){
+		return read_v10();
+	}
+	else if(s == "11"){
+		return read_v11();
+	}
+	else if(s == "12"){
+		return read_v12();
+	}
+	else if(s == "13"){
+		return read_v13();
+	}
+	else if(s == "14"){
+		return read_v14();
+	}
+	else if(s == "15"){
+		return read_v15();
+	}
+	else
+		return -1;
+}
+
+void registerFile::write_v(std::string s, bool n){
+	if(s == "1"){
+		write_v1(n);
+	}
+	else if(s == "2"){
+		write_v2(n);
+	}
+	else if(s == "3"){
+		write_v3(n);
+	}
+	else if(s == "4"){
+		write_v4(n);
+	}
+	else if(s == "5"){
+		write_v5(n);
+	}
+	else if(s == "6"){
+		write_v6(n);
+	}
+	else if(s == "7"){
+		write_v7(n);
+	}
+	else if(s == "8"){
+		write_v8(n);
+	}
+	else if(s == "9"){
+		write_v9(n);
+	}
+	else if(s == "10"){
+		write_v10(n);
+	}
+	else if(s == "11"){
+		write_v11(n);
+	}
+	else if(s == "12"){
+		write_v12(n);
+	}
+	else if(s == "13"){
+		write_v13(n);
+	}
+	else if(s == "14"){
+		write_v14(n);
+	}
+	else if(s == "15"){
+		write_v15(n);
+	}
+	else if(s == "0"){
+		std::cout << "Cannot write to reg 0." << std::endl;
+	}
+	else
+		std::cout << "Cannot write to valid bit." << std::endl;
 }
 
 registerFile::registerFile(const registerFile &a){
