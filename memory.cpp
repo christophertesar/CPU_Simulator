@@ -286,6 +286,9 @@ void memory::set_address(unsigned int address, instruction &i){
 	
 }
 
+int memory::get_inst_size(){
+	return instruct.size();
+}
 
 
 

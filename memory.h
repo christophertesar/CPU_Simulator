@@ -32,11 +32,15 @@ public:
 	void set_destination(unsigned int, instruction&);
 	void set_address(unsigned int, instruction&);
 	void set_instruction(unsigned int, instruction&);
+	int get_inst_size();
 	
 
 private:
-	std::vector<unsigned int> instruct;
+	
 	std::vector<unsigned int>::iterator inst_ptr;
+	std::vector<unsigned int> instruct;
+	
+	
 	int pc;
 	
 };

@@ -2,18 +2,29 @@
 #include "pipeline.h"
 
 int main(){
+
 std::string filename;
-std::cout << "Please enter file name to run." << std::endl;
+std::cout << "Please enter file name to run. Type \"exit\" to exit" << std::endl;
 std::cin >> filename;
 filename = filename + ".csv";
-pipeline pipe(filename);
 
-for(int i = 0; i < 100; i++){
-	pipe.fetch();
-	pipe.exe();
-	pipe.commit();
+while(filename != "exit.csv"){
+	
+	pipeline pipe(filename);
+
+
+	while(pipe.isValid()){
+
+		pipe.fetch();
+		pipe.exe();
+		pipe.commit();
+	}
+	
+	std::cout << "Please enter file name to run. Type \"exit\" to exit" << std::endl;
+	std::cin >> filename;
+	filename = filename + ".csv";
+	
 }
-
 return 0;
 
 }

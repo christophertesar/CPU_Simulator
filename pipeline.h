@@ -30,11 +30,14 @@ public:
 	void fetch();
 	void exe();
 	void commit();
+	
+	bool isValid();
+	void setValid();
 
 private:
 
 	std::string filename;
-		
+	bool valid = true;
 };
 
 #endif

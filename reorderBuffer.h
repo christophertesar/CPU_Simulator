@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <queue>
+#include <list>
 #include "helperFunctions.h"
 #include "instruction.h"
 
@@ -14,15 +15,16 @@ public:
 reorderBuffer();
 ~reorderBuffer();
 reorderBuffer(const reorderBuffer&);
+//reorderBuffer operator=(const reorderBuffer&){return 0;}
 
-std::queue<instruction> rob;
-std::queue<bool> valid1;
-std::queue<bool> valid2;
-std::queue<int> rob_id;
+std::list<instruction> rob;
+std::list<bool> valid1;
+std::list<bool> valid2;
+std::list<int> rob_id;
 
 private:
 
-
+int robert;
 
 };
 
