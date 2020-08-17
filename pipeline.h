@@ -5,6 +5,7 @@
 #include <vector>
 #include <iostream>
 #include <string>
+#include <iomanip>
 #include "helperFunctions.h"
 #include "memory.h"
 #include "instruction.h"
@@ -12,6 +13,7 @@
 #include "reorderBuffer.h"
 #include "IQueue.h"
 #include "execute.h"
+#include "exception.h"
 
 
 class pipeline{
@@ -27,6 +29,7 @@ public:
 	reorderBuffer rb;
 	IQueue iq;
 	execute ex;
+	exception except;
 	
 	void fetch();
 	void exe();

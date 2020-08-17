@@ -1,7 +1,7 @@
 #include "pipeline.h"
+#define DEBUG
 
 pipeline::pipeline(){
-
 	this->mem = memory();
 	
 	this->rf = registerFile();
@@ -16,10 +16,12 @@ pipeline::pipeline(std::string fn){
 	this->rf = registerFile();
 
 	this->rb = reorderBuffer();
-	
+
 	this->iq = IQueue();
 
 	this->ex = execute();
+
+	this->except = exception();
 
 }
 
@@ -52,19 +54,47 @@ void pipeline::fetch(){
 	rb.rob.push_back(j);         //push instructions into rb and iq
 	rb.valid_bit.push_back(false);
 	rb.rob_id.push_back(rb.get_robnext());
+	//iq.rob_id_iq.push_back(rb.get_robnext());
 	rb.increment_rob_next();
 	
 	iq.iqueue.push(j);			 //iqueue handling
-	iq.push_id_num();  
+	
+	iq.src1.push_back(j.get_src1());
+	iq.src2.push_back(j.get_src2());
+	iq.operation.push_back(j.get_opcode());
+	iq.dest.push_back(j.get_dest());
+	iq.immediate.push_back(j.get_immediate());
 	
 }
 
 void pipeline::exe(){
+
+	#ifdef DEBUG
+	
+	std::list<std::string>::iterator operationit = iq.operation.begin();
+	std::list<std::string>::iterator src1it = iq.src1.begin();
+	std::list<std::string>::iterator src2it = iq.src2.begin();
+	std::list<std::string>::iterator destit = iq.dest.begin();
+	std::list<std::string>::iterator immediateit = iq.immediate.begin();
+	std::list<bool>::iterator valid1it = iq.valid1.begin();
+	std::list<bool>::iterator valid2it = iq.valid2.begin();
+	std::list<int>::iterator rob_id_iqit = iq.rob_id_iq.begin();
+	
+	std::cout << "--------Instruction Queue------------\n";
+	std::cout << std::setw(6) <<"Dest"<< std::setw(6) << "V" << std::setw(6) << "Src1" << std::setw(6) << "V" << std::setw(6) << "Src2" << std::setw(10) << "Immediate" << std::endl;
+	std::cout << std::setw(6) << *destit << std::setw(6) << "1" << std::setw(6) << *src1it << std::setw(6) << "1" << std::setw(6) << *src2it << std::setw(10) << *immediateit << std::endl;
+	
+	#endif
+
 	#ifdef DEBUG
 	std::cout << "---------Execute----------\n";
 	#endif
 	instruction i = iq.iqueue.front(); //dispatch
 									   //read
+	#ifdef DEBUG
+	std::list<int>::iterator ro = rb.rob_id.begin();
+	std::cout << "INST: " << *ro << "): Ready to be executed" << std::endl;
+	#endif
 	
 	if(i.get_type() == "R"){//R
 		ex.executeR(i,rf);
@@ -91,7 +121,13 @@ void pipeline::exe(){
 	std::list<int>::iterator robit = rb.rob_id.begin();
 	std::cout << "ROB ID " << *robit << " marked" << std::endl;
 	#endif
+	
 	iq.iqueue.pop();
+	iq.src1.pop_front();
+	iq.src2.pop_front();
+	iq.dest.pop_front();
+	iq.immediate.pop_front();
+	iq.operation.pop_front();
 	
 }
 
@@ -99,12 +135,17 @@ void pipeline::commit(){
 	std::list<bool>::iterator it = rb.valid_bit.begin();
 	std::list<int>::iterator it2 = rb.rob_id.begin();
 	
+	if(rb.get_robval() != *it2){
+		std::cout << "ROB value invalid. Terminating program" << std::endl;
+		setValid();
+	}
+	
 	if((*it == true) && (rb.get_robval() == *it2)){
 	
 		#ifdef DEBUG
 		std::cout << "---------Commit-----------\n";
 		std::list<int>::iterator robit = rb.rob_id.begin();
-		std::cout << "ROB ID " << *robit << " Committed.\n\n" << std::endl;
+		std::cout << "ROB ID " << *robit << " Committed.\n\n\n\n" << std::endl;
 		#endif
 		
 		rb.rob.pop_front();

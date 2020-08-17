@@ -18,9 +18,25 @@ IQueue(const IQueue&);
 
 std::queue<instruction> iqueue;
 
-std::list<bool> valid;
+std::list<std::string> operation;
+std::list<std::string> src1;
+std::list<std::string> src2;
+std::list<std::string> dest;
+std::list<std::string> immediate;
+std::list<bool> valid1;
+std::list<bool> valid2;
+std::list<int> rob_id_iq;
 
-void push_id_num();
+/*
+std::list<std::string>::iterator operationit;
+std::list<std::string>::iterator src1it;
+std::list<std::string>::iterator src2it;
+std::list<std::string>::iterator destit;
+std::list<std::string>::iterator immediateit;
+std::list<bool>::iterator valid1it;
+std::list<bool>::iterator valid2it;
+std::list<int>::iterator rob_id_iqit;
+*/
 
 private:
 

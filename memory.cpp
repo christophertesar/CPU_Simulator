@@ -94,6 +94,9 @@ instruction memory::instruction_decode(unsigned int inst){
 		
 		unsigned int dest = find_dest1(inst);
 		set_destination(dest,i);
+		i.set_src1("-1");
+		i.set_src2("-1");
+		
 			
 	}
 	//---------------------------------------------------------------
@@ -103,6 +106,10 @@ instruction memory::instruction_decode(unsigned int inst){
 		
 		unsigned int address = find_address(inst);
 		set_address(address,i);
+		i.set_src1("-1");
+		i.set_src2("-1");
+		i.set_opcode("-1");
+		i.set_dest("-1");
 	}
 	//---------------------------------------------------------------
 	else if((inst & 0x40000000) == 0x40000000){ //01
@@ -153,6 +160,7 @@ instruction memory::instruction_decode(unsigned int inst){
 		unsigned int imm = find_immediate(inst);
 		set_dest(dest,src1,i);
 		set_immediate(imm,i);
+		i.set_src2("-1");
 		
 	}
 
@@ -205,6 +213,7 @@ instruction memory::instruction_decode(unsigned int inst){
 
 		set_dest(dest,src1,i);
 		set_src2(src2,i);
+		i.set_immediate("-1");
 		
 		}
 	return i;

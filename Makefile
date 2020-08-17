@@ -1,4 +1,4 @@
-OBJS =  main.o helperFunctions.o statistics.o reorderBuffer.o instruction.o memory.o pipeline.o IQueue.o execute.o fetchUnit.o registerFile.o
+OBJS =  main.o helperFunctions.o statistics.o reorderBuffer.o instruction.o memory.o pipeline.o IQueue.o execute.o fetchUnit.o registerFile.o exception.o
 OUT = run
 CC = g++
 FLAGS = -g -c
@@ -40,6 +40,9 @@ fetchUnit.o: fetchUnit.cpp
 
 registerFile.o: registerFile.cpp
 	$(CC) $(FLAGS) registerFile.cpp
+	
+exception.o: exception.cpp
+	$(CC) $(FLAGS) exception.cpp
 	
 clean: 
 	rm -f $(OBJS) $(OUT)

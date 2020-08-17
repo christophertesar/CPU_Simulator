@@ -6,6 +6,7 @@
 #include <queue>
 #include "instruction.h"
 #include "registerFile.h"
+#include "exception.h"
 #include "helperFunctions.h"
 
 class execute{

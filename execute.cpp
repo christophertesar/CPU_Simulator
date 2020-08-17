@@ -1,4 +1,5 @@
 #include "execute.h"
+#define DEBUG
 
 execute::execute(){
 
@@ -22,10 +23,20 @@ void execute::executeJ(instruction& i, registerFile& rf){
 }
 
 void execute::executeP(instruction& i, registerFile& rf){
-	int input;
-	std::cout << "Enter Input:";
-	std::cin >> input;
-	rf.write_reg(i.get_dest(),input);
+	bool val = false;
+	while(val == false){
+		int input;
+		std::cout << "Enter Input:";
+		std::cin >> input;
+		if(input < 0){
+			//except.invalid_user_in();
+			std::cout << "Input is not valid." << std::endl;
+		}
+		else{
+			rf.write_reg(i.get_dest(),input);
+			val = true;
+		}
+	}
 }	
 
 void execute::execute_op(instruction& i,registerFile& rf){
